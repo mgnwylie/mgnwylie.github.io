@@ -17,6 +17,7 @@ title: Hank Quinlan's Blog
   <title>Economic Inequality in Canadian Cities</title>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+   <script src="jquery-2.1.1.min.js"></script>
   <style>
     #map{ width: 900px; height: 500px; }
   </style>
@@ -35,6 +36,15 @@ title: Hank Quinlan's Blog
     maxZoom: 15,
   	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
+     
+  // my data
+  // City-level inequality
+  // load GeoJSON from an external file
+  $.getJSON("ineq_data.geojson",function(data){
+    // add GeoJSON layer to the map once the file is loaded
+    L.geoJson(data).addTo(map);
+  });
+ 
   </script>
 </body>
 </html>
